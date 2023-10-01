@@ -3,12 +3,15 @@ import Form from 'react-bootstrap/Form'
 import { useEffect,useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
+import {FormattedMessage} from 'react-intl'
+import { injectIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 
-function Login(){
+function Login(props){
 
 
-    
+    const {intl} = props;
 
     const [login, setLogin] = useState({email: '', password: '', role: true});
     const [emailError, setEmailError] = useState('');
@@ -29,7 +32,7 @@ function Login(){
         setLogin({...login, email: e.target.value})
 
         if (!validateEmail(login.email)) {
-            setEmailError('El email no tiene un formato válido');
+            setEmailError('The email does not have a valid format');
           } else {
             setEmailError('');
           }
@@ -39,7 +42,7 @@ function Login(){
         setLogin({...login, password: e.target.value})
 
         if (!validatePassword(login.password)) {
-            setPasswordError('La contraseña debe tener al menos 6 caracteres');
+            setPasswordError('The password must be at least 6 characters long');
           } else {
             setPasswordError('');
           }
@@ -53,21 +56,21 @@ function Login(){
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Col>
+            <Col >
             <Form>
-                <h1>Acceder</h1>
-                <h3>Usa tu cuenta uniandes</h3>
+                <h1><FormattedMessage id="Login"/></h1>
+                <h3><FormattedMessage id="Use your uniandes account"/></h3>
                 <Form.Group className='mb-6' controlId='formBasicEmail'>
-                    <Form.Label>Users name or Email</Form.Label>
-                    <Form.Control type='email' placeholder='Enter email' onChange={actualizarEmail}/>
-                    {emailError && <Form.Text className='text-danger'>{emailError}</Form.Text>}
+                    <Form.Label><FormattedMessage id="User name or Email"/></Form.Label>
+                    <Form.Control type='email' placeholder={intl.formatMessage({id: "Enter email"})} onChange={actualizarEmail}/>
+                    {emailError && <Form.Text className='text-danger'><FormattedMessage id={emailError}/></Form.Text>}
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formBasicPassword'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Password' onChange={actualizarPassword}/>
-                    {passwordError && <Form.Text className='text-danger'>{passwordError}</Form.Text>}
+                    <Form.Label><FormattedMessage id="Password"/></Form.Label>
+                    <Form.Control type='password' placeholder={intl.formatMessage({id: "Password"})} onChange={actualizarPassword}/>
+                    {passwordError && <Form.Text className='text-danger'><FormattedMessage id={passwordError}/></Form.Text>}
                 </Form.Group>
-                <Button variant='primary' onClick={handlePost}>Sing in</Button>
+                <Button variant='primary' onClick={handlePost}><Link style={{color: 'white'}} to={"/parts"} ><FormattedMessage id="Next"/></Link></Button>
             </Form>
             </Col>
         </Container>
@@ -76,4 +79,4 @@ function Login(){
 
 }
 
-export default Login;
+export default injectIntl(Login);

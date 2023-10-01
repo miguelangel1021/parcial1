@@ -1,0 +1,20 @@
+
+{
+    "User name or Email": "Nombre de usuario o correo",
+    "Password": "Contraseña",
+    "Enter email": "Ingresa el correo",
+    "Login": "Acceder",
+    "Use your uniandes account": "Usa tu cuenta uniandes",
+    "Next": "Siguiente",
+    "The email does not have a valid format": "El email no tiene un formato válido",
+    "The password must be at least 6 characters long": "La contraseña debe tener al menos 6 caracteres",
+    "Car Marker": "Marca del vehiculo",
+    "Car Model": "Modelo del vehiculo",
+    "Car Year": "Año del vehiculo",
+    "Available": "Disponible",
+    "Yes": "Si",
+    "No": "No",
+    "Description" : "Descripción",
+    "Price":"Precio"
+
+}
